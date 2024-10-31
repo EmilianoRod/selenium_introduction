@@ -40,6 +40,7 @@ public class Locators {
         driver.findElement(By.xpath("//input[@id='chkboxOne']")).click();
         driver.findElement(By.xpath("//input[@id='chkboxTwo']")).click();
         driver.findElement(By.xpath("//button[normalize-space()='Sign In']")).click();
+
         Thread.sleep(3000);
         driver.close();
     }
