@@ -14,11 +14,26 @@ public class Checkboxes {
         WebDriver driver = new ChromeDriver();
         driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
         Assert.assertFalse(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
-        System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
-
+//        System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
         driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();
         Assert.assertTrue(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
-        System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+//        System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+
+        //radio button
+//        System.out.println(driver.findElement(By.xpath("//input[@id='ctl00_mainContent_view_date2']")).isEnabled());
+        driver.findElement(By.xpath("//input[@id='ctl00_mainContent_rbtnl_Trip_1']")).click();
+        if(driver.findElement(By.xpath("//div[@id='Div1']")).getAttribute("style").contains("1")){
+            System.out.println("it's enabled");
+            Assert.assertTrue(true);
+        }else{
+            System.out.println("it's disabled");
+            Assert.assertTrue(false);
+        }
+
+
+
+
+
 
         // Count the number of checkboxes
         System.out.println(driver.findElements(By.cssSelector("input[type='checkbox']")).size());
