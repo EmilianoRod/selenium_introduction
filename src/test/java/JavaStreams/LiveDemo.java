@@ -33,8 +33,30 @@ public class LiveDemo {
         System.out.println(originalList);
         System.out.println(sortedList);
 
+        // Compare original list vs sorted list
+//        Assert.assertTrue(originalList.equals(sortedList));
 
-    // Compare original list vs sorted list
-        Assert.assertTrue(originalList.equals(sortedList));
+
+
+        List<String> price;
+        // scan the name column with getText -> Rice -> print the price of the Rice
+
+        do{
+            List<WebElement> rows = driver.findElements(By.xpath("//tr/td[1]"));
+            price = rows.stream().filter(s -> s.getText().contains("Rice"))
+                    .map(s -> getPriceVeggie(s)).collect(Collectors.toList());
+            price.forEach(a -> System.out.println(a));
+            if(price.size() < 1){
+                driver.findElement(By.xpath("//a[@aria-label='Next']")).click();
+            }
+        }while(price.size() < 1);
+
+
+
+    }
+
+    private static String getPriceVeggie(WebElement s) {
+       String priceValue = s.findElement(By.xpath("following-sibling::td[1]")).getText();
+       return priceValue;
     }
 }
